@@ -1,6 +1,6 @@
 <?php
 
-for ($i = 0; $i <= 100000000; $i++) {
+for ($i = 0; $i <= 100000; $i++) {
     $val = (($i % 5) * 48);
     echo factorial($val - 1);
 }
