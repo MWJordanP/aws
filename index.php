@@ -1,15 +1,24 @@
 <?php
+require __DIR__.'/vendor/autoload.php';
 
-for ($i = 0; $i <= 100000; $i++) {
-    $val = (($i % 5) * 48);
-    echo factorial($val - 1);
+use Embed\Embed;
+
+?>
+
+<form action="" method="post">
+    <label for="">Url</label>
+    <input type="url" name="url">
+    <button>
+        Afficher
+    </button>
+</form>
+
+
+<?php
+
+if (isset($_POST['url']) && !empty($_POST['url'])) {
+    $info = Embed::create($_POST['url']);
+    echo $info->getCode();
 }
 
-function factorial($number)
-{
-    if ($number < 2) {
-        return 1;
-    } else {
-        return ($number * factorial($number - 1));
-    }
-}
+?>
