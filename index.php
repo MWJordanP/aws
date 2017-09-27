@@ -5,7 +5,7 @@ use Embed\Embed;
 
 ?>
 
-<form action="" method="post">
+<form action="" method="get">
     <label for="">Url</label>
     <input type="url" name="url">
     <button>
@@ -16,8 +16,8 @@ use Embed\Embed;
 
 <?php
 
-if (isset($_POST['url']) && !empty($_POST['url'])) {
-    $info = Embed::create($_POST['url']);
+if (isset($_GET['url']) && !empty($_GET['url'])) {
+    $info = Embed::create($_GET['url']);
     echo $info->getCode();
 }
 
