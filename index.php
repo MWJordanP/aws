@@ -27,6 +27,8 @@ use Embed\Embed;
 //if (isset($_GET['url']) && !empty($_GET['url'])) {
 $info = Embed::create('https://www.youtube.com/watch?v=WxOulfAfKvk');
 echo $info->getCode();
+echo "<br>";
+echo 'Normalement ceci affiche une iframe x)';
 //}
 
 ?>
