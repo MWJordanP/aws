@@ -1,0 +1,4 @@
+language: php
+sudo: enabled
+php:
+  - '7.0'
