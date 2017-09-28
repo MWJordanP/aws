@@ -1,4 +1,10 @@
-language: php
-sudo: enabled
-php:
-  - '7.0'
+deploy:
+    - provider: s3
+    - provider: codedeploy
+    access_key_id: "AKIAIVKYVAFKKXAGZPEA"
+    secret_access_key: "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"
+    bucket: "S3 Bucket"
+    key: MWPrevot/aws
+    application: aws
+    deployment_group: MyDeploymentGroup
+    region: us-east-2
