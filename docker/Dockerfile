@@ -8,9 +8,9 @@ RUN apt-get update && \
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash - && \
     apt-get -y install python build-essential nodejs
 
-ADD . /src
+ADD src /src
 
-RUN cd /src && npm install
+RUN cd /src/ && npm install
 
 EXPOSE  8080
 
