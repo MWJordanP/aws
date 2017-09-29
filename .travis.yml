@@ -21,9 +21,9 @@ deploy:
   application: EmbedApplication
   deployment_group: embedPrevotJordan
   on: *2
-before_install:
-- composer install
 before_deploy:
 - zip -r embed *
 - mkdir -p dpl_cd_upload
 - mv embed.zip dpl_cd_upload/embed.zip
+script:
+  - phpunit --coverage-clover --bootstrap test.php
