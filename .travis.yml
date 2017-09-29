@@ -1,8 +1,27 @@
+language: php
+php:
+    - nightly
 deploy:
-    - provider: s3
-    - provider: codedeploy
-    bucket: "S3 Bucket"
-    key: MWPrevot/aws
-    application: aws
-    deployment_group: MyDeploymentGroup
-    region: us-east-2
+- provider: s3
+  access_key_id: AKIAJIHJQNB6GBN7CSQQ
+  secret_access_key: &1
+    secure: jbgzrcrBXH5MSKvhmpWCAF2+X73zu8BhhJfhTgbiCNWo/letjTPJhL8xuf1SRBxFj8IzEs0d1KJfdDAseD49se32DuiEHsAlDbouQGR2wmCoP7klgjOi30AXZK7uqZ9rnnIjXGCifbv2Q+M8K1D5Pojb5caanw51cEjx77bdEF0LSXCgH4utfbOveLgI6ifIEONzlDJMDtJ0tzyy2qUyC/JNdA1iKKTOeZAhC1jH60547c4nsgVU4CPeApHeEyWdV5gH5Zpp/CcGgFjz6019TJ1fH6GQKDk5h/RcdEI2xevcmirHukFJRX696QwJi8gbq9Qikkevj5dpdlFTBrG5kOdmMFqb5L2B3SXlGmKULJe3iMYICuMXPZko9KBR+9CKT9dVBdhTcLsGTD2T5zQlRnq4BAzHqvf07Er0VNapTENbrgzAwf4Wot1ejJGuOrRcUInE81yw4yTr6uM3t8MJaWTBplhlBnbaYrjFITASTMTgTPu9a04XMufO5huuDUM9YqEAAu84G2eb7XHSOyn825qipwrXg5EwAi1R5xvW0HxvDbomE3etcVOjBWEy/19EYRb35U38RPnk3Kp6YlSxFug7UD45OIyLdoj6KazCKgL5jDpx9z+4sIdslkK0VVlmrNcXwhrQyADeoJbDAEbMuW8VTpZfoixIPP733jJNgdw=
+  local_dir: dpl_cd_upload
+  skip_cleanup: true
+  region: us-east-2
+  on: &2
+    repo: MWJordanP/aws
+  bucket: aws-bucket-prevot
+- provider: codedeploy
+  access_key_id: AKIAJIHJQNB6GBN7CSQQ
+  secret_access_key: *1
+  bucket: aws-bucket-prevot
+  key: embed.zip
+  bundle_type: zip
+  application: EmbedApplication
+  deployment_group: embedPrevotJordan
+  on: *2
+before_deploy:
+- zip -r embed *
+- mkdir -p dpl_cd_upload
+- mv embed.zip dpl_cd_upload/embed.zip
