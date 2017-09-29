@@ -18,6 +18,7 @@ deploy:
   bucket: aws-bucket-prevot
   key: embed.zip
   bundle_type: zip
+  region: us-east-2
   application: embed
   deployment_group: embedPrevotJordan
   on: *2
